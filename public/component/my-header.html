@@ -1,0 +1,40 @@
+<script>
+	(() => {
+		function isHomePage() {
+			return document.location.pathname === '/';
+		};
+		
+		let template = `
+			<header>
+				<h1><slot></slot></h1>
+				${ (!isHomePage() ? '<a href="/">go back to index</a>' : '') }
+				
+			</header>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<style>
+				header {
+					display: grid;
+					grid-template-columns: 0fr 1fr;
+					grid-gap: 10px;
+					align-items: flex-end;
+					margin-bottom: 15px;
+				}
+				
+				header h1 {
+					margin: 0;
+					line-height: .9;
+					white-space: nowrap;
+				}
+			</style>
+		`;
+
+		customElements.define('my-header', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

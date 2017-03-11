@@ -1,0 +1,11 @@
+:host {
+	margin-bottom: 15px;
+	border: 1px solid #bababa;
+	border-radius: 5px;
+	padding: 5px;
+	display: block;
+}
+
+:host:last-child {
+	margin-bottom: 0;
+}

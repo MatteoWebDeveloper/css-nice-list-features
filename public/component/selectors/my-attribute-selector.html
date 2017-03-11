@@ -1,0 +1,42 @@
+<script>
+	(() => {
+		let template = `
+			<div>
+				<h2>Attribute selector</h2>
+				<span item="tomato other-attr">element 1</span>
+				<span item="other-attr potato">element 2</span>
+				<span item="carrot other-attr">element 3</span>
+				<a href="https://somewhere.com">secure link</a>
+				<a href="http://somewhere.com">unsecure link</a>
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				[item~=tomato] {
+					color: tomato;
+				}
+				
+				[item~=potato] {
+					color: #e3d356;
+				}
+				
+				[item~=carrot] {
+					color: orange;
+				}
+				
+				[href^="https"] {
+					color: green;
+				}
+			</style>
+		`;
+
+		customElements.define('my-attribute-selector', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

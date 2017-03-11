@@ -1,0 +1,30 @@
+<script>
+	(() => {
+		let template = `
+			<div>
+				<h2>Selection selector</h2>
+				
+				<p>Select text below</p>
+				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt consequat eros lacinia lobortis. Praesent et tellus in magna pulvinar cursus quis quis urna. Etiam id turpis eu nisl facilisis pulvinar ac sit amet arcu. Mauris sagittis diam ut purus posuere, sit amet volutpat felis venenatis. </p>
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				p::selection {
+					background-color: tomato;
+					color: white;
+				}
+			</style>
+		`;
+
+		customElements.define('my-selection-selector', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

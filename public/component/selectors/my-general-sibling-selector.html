@@ -1,0 +1,30 @@
+<script>
+	(() => {
+		let template = `
+			<div>
+				<h2>My general sibling selector</h2>
+				
+				<span class="sibling">before</span>
+				<input type="checkbox" />
+				<span class="sibling">after</span>
+				<span class="sibling">after</span>
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				input[type="checkbox"]:checked ~ .sibling {
+					color: tomato;
+				}
+			</style>
+		`;
+
+		customElements.define('my-general-sibling-selector', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>
