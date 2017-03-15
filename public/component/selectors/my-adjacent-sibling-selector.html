@@ -2,7 +2,7 @@
 	(() => {
 		let template = `
 			<div>
-				<h2>My general sibling selector</h2>
+				<h2>My adjacent sibling selector</h2>
 				
 				<p>click the checkbox</p>
 				
@@ -24,13 +24,13 @@
 					border: 1px solid black;
 				}
 			
-				input[type="checkbox"]:checked ~ .sibling {
+				input[type="checkbox"]:checked + .sibling {
 					color: tomato;
 				}
 			</style>
 		`;
 
-		customElements.define('my-general-sibling-selector', class myElement extends HTMLElement {
+		customElements.define('my-adjacent-sibling-selector', class myElement extends HTMLElement {
 			constructor() {
 				super();
 				let shadowRoot = this.attachShadow({ mode: 'open' });

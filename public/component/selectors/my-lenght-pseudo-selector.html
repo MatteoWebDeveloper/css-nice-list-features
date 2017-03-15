@@ -1,0 +1,74 @@
+<script>
+	(() => {
+		let template = `
+			<div>
+				<h2>Length pseudo selector</h2>
+				
+				<h3>:empty</h3>
+				<div class="scenario-empty">
+					<div class="scenario-empty__element"></div>
+					<div class="scenario-empty__element"> </div>
+					<div class="scenario-empty__element">text</div>
+					<div class="scenario-empty__element"><div>child</div></div>
+				</div>
+				
+				<h3>:only-child</h3>
+				<div class="scenario-onle-child">
+					<div class="scenario-onle-child__element"></div>
+					<div class="scenario-onle-child__element"> </div>
+					<div class="scenario-onle-child__element">text</div>
+					<div class="scenario-onle-child__element"><div>child</div></div>
+				</div>
+				
+				<h3>:only-of-type</h3>
+				<div></div>
+				
+				<h3>:not</h3>
+				<div class="scenario-not">
+					<div class="scenario-not__element"></div>
+					<div class="scenario-not__element"></div>
+					<div class="scenario-not__element">it's not</div>
+				</div>
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				.scenario-empty__element {
+					border: 1px solid black;
+					display: block;
+					width: 50px;
+					height: 50px;
+				}
+				.scenario-empty__element:empty {
+					border: 1px solid tomato;
+				}
+				
+				.scenario-onle-child__element {}
+				.scenario-onle-child__element:only-child {} {}
+				
+				.scenario-only-of-type__element {}
+				.scenario-only-of-type__element:only-of-type {} {}
+				
+				.scenario-not__element { 
+					border: 1px solid black;
+					display: block;
+					width: 50px;
+					height: 50px; 
+				}
+				.scenario-not__element:not(:last-child) { 
+					margin-bottom: 10px; 
+				}
+				
+			</style>
+		`;
+
+		customElements.define('my-lenght-pseudo-selector', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

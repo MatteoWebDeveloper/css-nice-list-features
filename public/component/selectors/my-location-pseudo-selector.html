@@ -1,0 +1,33 @@
+<!-- :target does not work inside shadow dom -->
+
+<script>
+	(() => {
+		let template = `
+			<div>
+				<!-- <h2>Location pseudo selector</h2> -->
+				
+				<a href="#location">location-1</a>
+				
+				<h2 id="location" name="location">title-1</h2>
+			</div>
+
+			<style>
+				#location:target {
+					background-color: yellow;
+					color: tomato;
+				}
+			</style>
+		`;
+
+		customElements.define('my-location-pseudo-selector', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				
+				this.innerHTML = template;
+				
+				// let shadowRoot = this.attachShadow({ mode: 'open' });
+				// shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

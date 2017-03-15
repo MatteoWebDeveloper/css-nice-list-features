@@ -1,0 +1,34 @@
+<script>
+	(() => {
+		let template = `
+			<div>
+				<h2>Index pseudo selector</h2>
+				
+				
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				:first
+				:first-child
+				:first-of-type
+				:last-child
+				:last-of-type
+				:nth-child()
+				:nth-last-child()
+				:nth-last-of-type()
+				:nth-of-type()
+				
+			</style>
+		`;
+
+		customElements.define('my-index-pseudo-selector', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

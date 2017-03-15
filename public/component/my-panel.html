@@ -1,0 +1,31 @@
+<script>
+	(() => {
+		let template = `
+			<h2 id="title"></h2>
+			
+			<slot></slot>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+		`;
+
+		customElements.define('my-panel', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+			
+			static get observedAttributes() {
+				return ['title'];
+			}
+			
+			attributeChangedCallback(name, oldValue, newValue) {
+				if (name == 'title') {
+					let title = document.createTextNode(newValue);
+					this.shadowRoot.querySelector('#title').appendChild(title);
+				}
+			}
+		});
+	})()
+</script>
