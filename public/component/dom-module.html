@@ -1,0 +1,14 @@
+<!-- work in progress https://github.com/Polymer/polymer/blob/master/lib/elements/dom-module.html -->
+<script>
+	(() => {
+		let template = '<slot></slot>';
+
+		customElements.define('dom-module', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>
