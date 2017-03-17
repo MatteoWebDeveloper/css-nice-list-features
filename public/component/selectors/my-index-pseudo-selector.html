@@ -2,24 +2,53 @@
 	(() => {
 		let template = `
 			<div>
-				<h2>Index pseudo selector</h2>
-				
-				
+				<h2>:nth-child pseudo selector</h2>
+				<div class="layout">
+					<div class="scenario-1">
+						<div class="row">1</div>
+						<div class="row">2</div>
+						<div class="row">3</div>
+						<div class="row">4</div>
+						<div class="row">5</div>
+					</div>
+					<div class="scenario-2">
+						<div class="row">1</div>
+						<div class="row">2</div>
+						<div class="row">3</div>
+						<div class="row">4</div>
+						<div class="row">5</div>
+					</div>
+					
+					<div class="scenario-3">
+						<div class="row">1</div>
+						<div class="row">2</div>
+						<div class="row">3</div>
+						<div class="row">4</div>
+						<div class="row">5</div>
+					</div>
+				</div>
 			</div>
 			
 			<link rel="stylesheet" href="/component/style/base.css"/>
 			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
 			<style>
-				:first
-				:first-child
-				:first-of-type
-				:last-child
-				:last-of-type
-				:nth-child()
-				:nth-last-child()
-				:nth-last-of-type()
-				:nth-of-type()
+				.layout {
+					display: grid;
+					grid-template-columns: repeat(4, 1fr);
+					grid-column-gap: 15px;
+				}
 				
+				.scenario-1 .row:nth-child(2) {
+					background-color: tomato;
+				}
+				
+				.scenario-2 .row:nth-child(2n + 2) {
+					background-color: tomato;
+				}
+				
+				.scenario-3 .row:nth-child(odd) {
+					background-color: tomato;
+				}
 			</style>
 		`;
 
