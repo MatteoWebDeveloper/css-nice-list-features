@@ -4,23 +4,112 @@
 			<div>
 				<h2>Form pseudo selector</h2>
 				
-				
+				<form name="form-name" class="layout">
+					<label>
+						<input name="field-1" type="text" placeholder="add name"/>
+						name
+					</label>
+					
+					<label>
+						<input name="field-2" type="text" placeholder="input disabled" disabled/>
+						surname
+					</label>
+					
+					<label>
+						<input name="field-3" type="email" placeholder="add email" required/>
+						email
+					</label>
+					
+					<label>
+						<input type="checkbox" value="first_checkbox"/> <span>first_checkbox</span>
+					</label>
+					
+					<label>
+						<input type="checkbox" value="second_checkbox"/> <span>second_checkbox</span>
+					</label>
+					
+					<label>
+						<input type="radio" value="first_radio" name="radio"/> <span>first_radio</span>
+					</label>
+					
+					<label>
+						<input type="radio" value="second_radio" name="radio" checked/> <span>second_radio</span>
+					</label>
+					
+					<label>
+						<input type="number" min="18" max="60"/> <span>age</span> range 18 to 60
+					</label>
+					
+					<label>
+						Select
+						<select name="select">
+							<option value="value1">Value 1</option> 
+							<option value="value2" selected>Value 2</option>
+							<option value="value3">Value 3</option>
+						</select>
+					</label>
+					
+					<div>
+						<button type="sumbit">submit</button>
+					</div>
+				</form>
 			</div>
 			
 			<link rel="stylesheet" href="/component/style/base.css"/>
 			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
 			<style>
-				:checked
-				:default
-				:disabled
-				:enabled
-				:indeterminate
-				:valid
-				:invalid
-				:optional
-				:required
-				:in-range
-				:out-of-range
+				.layout {
+					display: grid;
+					grid-row-gap: 10px;
+				}
+				
+				input:enabled {
+					color: #444444;
+				}
+				
+				input:optional {
+					/* select not required input */
+				}
+				
+				input:required {
+					/* select required input */
+				}
+				
+				input:disabled {
+					color: gray;
+					background-color: #ccc;
+					opacity: .5;
+				}
+				
+				input:valid {
+					color: green;
+					border: 1px solid green;
+				}
+				
+				/* :placeholder-shown is not supported on ie and edge */
+				input:invalid:not(:placeholder-shown) {
+					color: red;
+					border: 1px solid red;
+				}
+				
+				input[type=checkbox]:checked ~ span,
+				input[type=radio]:checked ~ span {
+					color: green;
+				}
+				
+				input[type=radio]:default ~ span:after {
+					content: ' (default)';
+					color: #999;
+					font-style: italic;
+				}
+				
+				input:in-range {
+					color: #09ce74;
+				}
+				
+				input:out-of-range:not(:placeholder-shown) {
+					color: #ffae2e;
+				}
 			</style>
 		`;
 
