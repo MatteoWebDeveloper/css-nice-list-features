@@ -15,8 +15,19 @@
 
 			<style>
 				#location:target {
-					background-color: yellow;
-					color: tomato;
+					animation-duration: 1s;
+  					animation-name: target;
+				}
+				
+				@keyframes target {
+					0% {
+						background-color: yellow;
+						color: tomato;
+					}
+					100% {
+						color: initial;
+						background-color: transparent;
+					}
 				}
 			</style>
 		`;
