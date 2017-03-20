@@ -1,0 +1,55 @@
+<script>
+	(() => {
+		let template = `
+			<div class="page">
+				
+				<div class="grid">
+					<button type="button">some text</button>
+					<button type="button">some text t som eqw</button>
+					<button type="button">some text</button>
+					<button type="button">some text som eqwef</button>
+				</div>
+				
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				.page {
+					max-width: 800px;
+					margin: 0 auto;
+					box-sizing: border-box;
+				}
+				
+				.grid {
+					--width-contex: 1;
+					
+					height: 400px;
+					background: tomato;
+				}
+				
+				@media (min-width: 400px) {
+					.grid {
+						--width-contex: auto;
+						
+						background: green;
+					}
+				}
+				
+				button {				
+					border: 1px solid black;
+					background: white;
+					width: calc(var(--width-contex) * 100%);
+				}
+			</style>
+		`;
+
+		customElements.define('my-calc-property', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>
