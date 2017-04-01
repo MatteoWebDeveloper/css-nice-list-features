@@ -1,0 +1,60 @@
+<script>
+	(() => {
+		let template = `
+			<h2>CSS reset with all property</h2>
+			
+			<p>paragraph has: base style</p>
+			<div class="page">
+				<p>paragraph has: base style and page style inherited</p>
+				<p class="reset-initial">paragraph has initial reset: browser, base and inheritance</p>
+				<p class="reset-unset">paragraph has unset reset: browser and base</p>
+			</div>
+
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				:host {
+					display: flex;
+					flex-direction: column;
+					font-size: 16px;
+				}
+				
+				* {
+					/* all: initial; */ /* this break web component but it work on document */
+				}
+				
+				p {
+					color: rgba(103, 58, 183, 1);
+					font-size: 1em;
+				}
+				
+				.page {
+					box-sizing: border-box;
+					align-self: center;
+					max-width: 900px;
+					padding: 5px 10px;
+					border-radius: 4px;
+					font-size: 2em;
+					border: 1px solid rgba(103, 58, 183, 1);
+					background-color: rgba(103, 58, 183, 0.07);
+				}
+				
+				.reset-initial {
+					all: initial
+				}
+				
+				.reset-unset {
+					all: unset;
+				}
+			</style>
+		`;
+
+		customElements.define('my-all-property', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

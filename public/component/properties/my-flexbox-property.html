@@ -1,0 +1,127 @@
+<script>
+	(() => {
+		let template = `
+			<h2>Flexbox</h2>
+			
+			<div class="grid">
+				<div>
+					<h3>All centered</h3>
+					<div class="layout">
+						<div class="item">item 1</div>
+						<div class="item">item 2</div>
+						<div class="item">item 3</div>
+					</div>
+				</div>
+				
+				<div>
+					<h3>justify-content</h3>
+					<div class="layout layout--justify-content">
+						<div class="item">item 1</div>
+						<div class="item">item 2</div>
+						<div class="item">item 3</div>
+					</div>
+				</div>
+				
+				<div>
+					<h3>align-content</h3>
+					<div class="layout layout--align-content">
+						<div class="item">item 1</div>
+						<div class="item">item 2</div>
+						<div class="item">item 3</div>
+					</div>
+				</div>
+				
+				<div>
+					<h3>align-items</h3>
+					<div class="layout layout--align-items">
+						<div class="item">item 1</div>
+						<div class="item">item 2</div>
+						<div class="item">item 3</div>
+					</div>
+				</div>
+				
+				<div>
+					<h3>align-items and align-content stretch</h3>
+					<div class="layout layout--align-items-content">
+						<div class="item">item 1</div>
+						<div class="item">item 2</div>
+						<div class="item">item 3</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="group">
+				<h2>Missing: </h2>
+				
+				<p>justify-items justify-self align-self</p>
+			</div>
+			
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+				.group {
+					margin: 15px 0;
+				}
+			
+				.grid {
+					box-sizing: border-box;
+					display: flex;
+					flex-wrap: wrap;
+					margin: -10px;
+				}
+				
+				.grid > div {
+					padding: 5px;
+				}
+			
+				.layout {
+					height: 150px;
+					width: 150px;
+					border: 1px solid gray;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: center;
+					align-content: center;
+					align-items: center;
+				}
+				
+				.layout--justify-content { 
+					width: 350px;
+					justify-content: space-around;
+				}
+				
+				.layout--align-content { 
+					align-content: space-between;
+				}
+				
+				.layout--align-items { 
+					align-items: flex-start;
+				}
+				
+				.layout--align-items-content {
+					align-content: stretch;
+					align-items: stretch;
+				}
+				
+				.item {
+					box-sizing: border-box;
+					min-height: 30px; 
+					min-width:60px; 
+					background: gray;
+					border: 1px solid black;
+				}
+				.item:nth-child(2) { min-height: 50px; }
+				.item:nth-child(3) { min-height: 80px; }
+			</style>
+		`;
+
+		customElements.define('my-flexbox-property', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

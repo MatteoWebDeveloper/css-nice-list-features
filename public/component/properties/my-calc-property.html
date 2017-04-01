@@ -1,30 +1,64 @@
 <script>
 	(() => {
 		let template = `
+			<h2>CSS calc</h2>
+			
+			<p>add more example with calc</p>
+			
+			<div class="calc-layout">
+				<div class="calc-layout-item">col 1</div>
+				<div class="calc-layout-item">col 2</div>
+			</div>
+			
+			<h3>vars condition hack with calc</h3>
+			
 			<div class="page">
-				
 				<div class="grid">
 					<button type="button">some text</button>
 					<button type="button">some text t som eqw</button>
 					<button type="button">some text</button>
 					<button type="button">some text som eqwef</button>
-				</div>
-				
+				</div>	
 			</div>
 			
 			<link rel="stylesheet" href="/component/style/base.css"/>
 			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
 			<style>
+				.calc-layout {
+					display: flex;
+					border: 1px solid gray;
+				}
+				
+				.calc-layout-item {
+					border: 1px solid orange;
+					width: 100px;
+				}
+				
+				.calc-layout-item:last-child {
+					width: calc(100% - 100px);
+				}
+			
 				.page {
 					max-width: 800px;
 					margin: 0 auto;
 					box-sizing: border-box;
 				}
 				
+				.page:before {
+					display: block;
+					content: 'resize page, this screen is small';
+				}
+				
+				@media (min-width: 400px) {
+					.page:before {
+						content: 'resize page, this screen is larger';
+					}
+				}
+				
 				.grid {
 					--width-contex: 1;
 					
-					height: 400px;
+					height: 100px;
 					background: tomato;
 				}
 				
@@ -36,11 +70,12 @@
 					}
 				}
 				
-				button {				
+				button {
 					border: 1px solid black;
 					background: white;
 					width: calc(var(--width-contex) * 100%);
 				}
+				
 			</style>
 		`;
 

@@ -1,0 +1,129 @@
+<script>
+	(() => {
+		let template = `
+			<h2>Grid</h2>
+			
+			<div class="grid">
+				<h1>Subscribe to this form</h1>
+				
+				<label>
+					<input type="text"/> Name
+				</label>
+				<label>
+					<input type="text"/> Email
+				</label>
+				
+				<button>Subscribe</button>
+			</div>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<link rel="stylesheet" href="/component/style/component-overlay.css"/>
+			<style>
+			:host {
+				text-align: center;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			@media (min-width: 600px) {
+				:host {
+					align-items: center;
+				}
+			}
+			
+			h1 {
+			  all: initial;
+			  font-family: Arial;
+			  font-size: 18px;
+			  font-weight: bold;
+			}
+
+			button {
+			  font-size: 16px;
+			  padding: 10px;
+			  border-radius: 4px;
+			  border: 0;
+			  color: white;
+			  background-color: #03a9f4;
+			}
+
+			label {
+			  font-family: Arial;
+			  font-size: 18px;
+			  color: gray;
+			}
+
+			input {
+			  font-size: 16px;
+			  margin-right: 10px;
+			  border: 0;
+			  border-radius: 4px;
+			  padding: 10px;
+			}
+			
+			.grid {
+				max-width: 600px;
+				display: grid;
+				grid-gap: 10px 20px;
+				grid-template-columns: 1fr;
+				grid-template-rows: auto 1fr 1fr auto;
+				grid-template-areas: 
+					'header'
+					'none'
+					'none'
+					'button'
+				;
+				padding: 10px;
+				border: 1px solid gray;
+				border-radius: 4px;
+				background: rgb(239, 239, 239);
+			}
+
+			@media (min-width: 600px) {
+			  .grid {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: auto 1fr auto;
+				grid-template-areas: 
+				  'header header'
+				  'none none'
+				  'button button'
+				;
+				/* justify-items: center; */ /* this shrik every element */
+				--button-position: center; /* this one only the one you wish :) */
+			  }
+			}
+
+			.grid h1 {
+			  text-align: center;
+			  grid-area: header;
+			}
+
+			.grid label {
+			  display: flex;
+			  align-items: center;
+			}
+
+			.grid input {
+			  flex-grow: 1;
+			  margin-right: 10px;
+			}
+
+			.grid button {
+				background-color: #03a9f4;
+				grid-column-start: 1;
+				grid-column-end: span 2;
+				grid-area: button;
+				justify-self: var(--button-position, initial);
+			}
+			</style>
+		`;
+
+		customElements.define('my-grid-property', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>
