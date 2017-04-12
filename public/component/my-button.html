@@ -1,0 +1,30 @@
+<script>
+	(() => {		
+		let template = `
+			<slot></slot>
+			
+			<link rel="stylesheet" href="/component/style/base.css"/>
+			<style>
+				:host {
+					font-family: Arial;
+					font-size: 16px;
+					padding: 10px;
+					border-radius: 4px;
+					border: 0;
+					color: white;
+					background-color: #03a9f4;
+					text-align: center;
+					align-self: var(--button-align, initial);
+				}
+			</style>
+		`;
+
+		customElements.define('my-button', class myElement extends HTMLElement {
+			constructor() {
+				super();
+				let shadowRoot = this.attachShadow({ mode: 'open' });
+				shadowRoot.innerHTML = template;
+			}
+		});
+	})()
+</script>

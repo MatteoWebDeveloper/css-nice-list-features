@@ -1,6 +1,8 @@
 <script>
 	(() => {
 		let template = `
+			
+		
 			<h2>Flexbox</h2>
 			
 			<div class="grid">
@@ -54,6 +56,10 @@
 				<h2>Missing: </h2>
 				
 				<p>justify-items justify-self align-self</p>
+			</div>
+			
+			<div class="flex-2">
+				<my-button>click button</my-button>
 			</div>
 			
 			
@@ -113,6 +119,10 @@
 				}
 				.item:nth-child(2) { min-height: 50px; }
 				.item:nth-child(3) { min-height: 80px; }
+				
+				.flex-2 {
+					display: flex;
+				}
 			</style>
 		`;
 
